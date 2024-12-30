@@ -34,7 +34,7 @@ namespace CQRS.Core.Domain
             _changes.Clear();
         }
 
-        private void ApplyChanges(BaseEvent @event, bool isNew)
+        public void ApplyChanges(BaseEvent @event, bool isNew)
         {
             var method = this.GetType().GetMethod("Apply", new Type[] { @event.GetType() });
 
@@ -51,12 +51,12 @@ namespace CQRS.Core.Domain
             }
         }
 
-        protected void RaiseEvent(BaseEvent @event)
+        public void RaiseEvent(BaseEvent @event)
         {
             ApplyChanges(@event, true);
         }
 
-        protected void ReplayEvent(IEnumerable<BaseEvent> @events)
+        public void ReplayEvent(IEnumerable<BaseEvent> @events)
         {
             foreach (var @event in @events)
             {
