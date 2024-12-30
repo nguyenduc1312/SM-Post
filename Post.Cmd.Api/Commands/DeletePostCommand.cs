@@ -2,7 +2,7 @@
 
 namespace Post.Cmd.Api.Commands
 {
-    public class DeleteCommentCommand:BaseCommand
+    public class DeletePostCommand:BaseCommand
     {
         public string Username { get; set; }
     }
