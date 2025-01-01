@@ -13,9 +13,9 @@ namespace Post.Query.Domain.Repositories
         Task UpdateAsync(PostEntity post);
         Task DeleteAsync(Guid id);
         Task<PostEntity> GetByIdAsync(Guid id);
-        Task<IEnumerable<PostEntity>> GetAllAsync();
-        Task<IEnumerable<PostEntity>> GetByAuthorAsync();
-        Task<IEnumerable<PostEntity>> GetWithLikeAsync();
-        Task<IEnumerable<PostEntity>> GetWithCommentAsync();
+        Task<List<PostEntity>> ListAllAsync();
+        Task<List<PostEntity>> ListByAuthorAsync(string author);
+        Task<List<PostEntity>> ListWithLikesAsync(int numberOfLikes);
+        Task<List<PostEntity>> ListWithCommentsAsync();
     }
 }
