@@ -16,7 +16,7 @@ namespace Post.Query.Infrastructure.DataAccess
             _configure = confiure;
         }
 
-        public ApplicationDBContext CreateDbContext(Action<DbContextOptionsBuilder> configure)
+        public ApplicationDBContext CreateDbContext()
         {
             DbContextOptionsBuilder<ApplicationDBContext> options = new();
             _configure(options);
