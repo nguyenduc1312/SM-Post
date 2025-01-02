@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CQRS.Core.Common;
 using CQRS.Core.Domain;
 using CQRS.Core.Events;
 using CQRS.Core.Exceptions;
@@ -55,7 +56,8 @@ namespace Post.Cmd.Infrastructure.Stores
 
                 await _eventStoreRepository.SaveAsync(eventModel);
 
-                var topic = "SocialMediaPostEvent";
+                //var topic = "SocialMediaPostEvent";
+                var topic = KafkaCommon.Topic;
                 await _eventProducer.ProduceAsync(topic, @event);
             }
         }
