@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using CQRS.Core.Domain;
 using CQRS.Core.Events;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using Post.Cmd.Infrastructure.Config;
 
@@ -17,6 +20,7 @@ namespace Post.Cmd.Infrastructure.Repositories
 
         public EventStoreRepository(IOptions<MongoDbConfig> config)
         {
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.CSharpLegacy));
             var mongoClient = new MongoClient(config.Value.ConnectionString);
             var mongoDatabase = mongoClient.GetDatabase(config.Value.Database);
 
