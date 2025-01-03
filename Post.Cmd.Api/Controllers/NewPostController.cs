@@ -1,6 +1,7 @@
 ﻿using CQRS.Core.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
 using Post.Cmd.Api.Commands;
 using Post.Common.DTOs;
 
