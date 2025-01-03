@@ -34,7 +34,7 @@ namespace Post.Cmd.Infrastructure.Producers
 
             var deliveryResult = await producer.ProduceAsync(topic, eventMessage);
 
-            if (deliveryResult.Status != PersistenceStatus.NotPersisted)
+            if (deliveryResult.Status == PersistenceStatus.NotPersisted)
                 throw new Exception($"Error Event: {@event.GetType().Name}, Topic: {topic}, Rootcase: {deliveryResult.Message}.");
         }
     }
